@@ -1,0 +1,2 @@
+## Utilities
+This folder stores the functions defined and be used in the algorithm. This is just a practice of mine I like to keep things tidy and keeping the main script as simples as possible. Personally, it is more readable maybe :)

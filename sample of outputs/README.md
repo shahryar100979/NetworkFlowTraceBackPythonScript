@@ -1,2 +1,2 @@
 ## Sample of Outputs
-These outputs are results of the 6 problems in NetworkFlowProblem-Data.xlsx 
+Theis folder includes outputs generated for the 6 problems in NetworkFlowProblem-Data.xlsx, located in the 'input' folder.
