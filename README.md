@@ -1,20 +1,20 @@
 # Network Flow Trace Back Python Script
 
-This Python script performs a trace back of demands in a network flow problem. It reads input data from an Excel file named 'NetworkFlowProblem-Data.xlsx', processes the data, and generates the trace back for each demand based on the given order of processing steps. The script utilizes the pandas library to handle data frames efficiently.
+This Python script performs a trace back of demands in a network flow problem. It reads input data from an Excel file named 'NetworkFlowProblem-Data.xlsx', processes the data, and generates the trace back for each demand based on the given order of processing steps. The script utilizes the pandas library to handle data frames efficiently. The trace back algorithm is a heuristic search where each is traced back to its source. To ensure that every demand is traced back to its source, in each iteration the algorithm keeps track of all previously identified paths, and if a demand could not be traced back to its source, in the next iteration it re-orders the demands, and repeat the steps for tracing back. This process is repeated until all demands could be traced back to their source.
 
 ## Overview
 
 1. Import the necessary libraries, including pandas and custom utility functions from different modules.
 
-2. Read the input data from the Excel file 'NetworkFlowProblem-Data.xlsx' and convert column names to lowercase.
+2. Read the input data from the Excel file 'NetworkFlowProblem-Data.xlsx' and convert column names to lowercase. This is jusy to ensure that all column names matches with the ones in the code.
 
-3. Define the 'delta' variable, which represents a tolerance for small floating-point discrepancies.
+3. Define the 'delta' variable, which represents a tolerance for small floating-point discrepancies. This is to ensure that floating numbers after being imported from excel file, does not violate meeting the demands.
 
-4. Define the processing steps in a list: ['Sourcing', 'Conditioning', 'Treatment', 'Forwarding', 'Delivery'].
+4. Define the processing steps in a list: ['Sourcing', 'Conditioning', 'Treatment', 'Forwarding', 'Delivery']. This is the ordinal list of all processes, and it is assumed that these steps should exist for all demands.
 
 5. Define utility functions such as 'create_combined_dataframe', 'sort_formatted_out', 'write_output_into_excel', and 'subtract_amount_if_exists' to perform various data processing and output operations.
 
-6. Sort the input data frame based on the 'week' column in descending order.
+6. Sort the input data frame based on the 'week' column in descending order. This is just to speed up things as demands are more likely to happen at a later time, and it would be better to start from the latest demand.
 
 7. Identify demands from the sorted data frame based on the last processing step ('Delivery').
 
@@ -26,15 +26,15 @@ This Python script performs a trace back of demands in a network flow problem. I
 
 11. The script enters a loop to randomly sample the demands and perform the trace back process until all demands can be successfully traced back or a limit of attempts is reached.
 
-12. The output of the trace back is written into an Excel file named 'output.xlsx' and stored in the 'output' folder.
+12. The output of the trace back is written into an Excel file named 'output.xlsx' in the root directory.
 
 ## Usage
 
-1. Ensure that the 'NetworkFlowProblem-Data.xlsx' file is located in the 'input' folder.
+1. Ensure that the 'NetworkFlowProblem-Data.xlsx' file is located in the 'input' folder. Or you could provide your excel file with a sheet name that starts with "Input" in the 'input' folder.
 
 2. Run the Python script 'main.py' in the terminal.
 
-3. The script will prompt for the name of the sheet in the Excel file. Enter the sheet name and press 'Enter'.
+3. The script will prompt for the name of the sheet in the Excel file. Enter the sheet name and press 'Enter'. In case you would like to use the default filename as 'NetworkFlowProblem-Data.xlsx', you could type 'skip'.
 
 4. The script will then perform the trace back process for the demands and generate the output Excel file.
 
@@ -44,7 +44,7 @@ This Python script performs a trace back of demands in a network flow problem. I
 
 7. The script will also create additional attempts if the trace back fails, ensuring a successful trace back for all demands.
 
-8. The output Excel file with the trace back results will be saved in the 'output' folder.
+8. The output Excel file with the trace back results will be saved in the 'output.xlsx' file.
 
 ## Additional Information
 
