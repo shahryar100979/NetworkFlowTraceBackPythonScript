@@ -1,14 +1,24 @@
-# Network Flow Trace Back Python Script
+# Network Flow Trace Back Problem
 
-This Python script performs a trace back of demands in a network flow problem. It reads input data from an Excel file named 'NetworkFlowProblem-Data.xlsx', processes the data, and generates the trace back for each demand based on the given order of processing steps. The script utilizes the pandas library to handle data frames efficiently. The trace back algorithm is a heuristic search where each is traced back to its source. To ensure that every demand is traced back to its source, in each iteration the algorithm keeps track of all previously identified paths, and if a demand could not be traced back to its source, in the next iteration it re-orders the demands, and repeat the steps for tracing back. This process is repeated until all demands could be traced back to their source.
+This project focuses on solving network flow trace back problems given flows from source country to demand country for different demands. Each flow from source country to demand country should go through 5 different processing steps: Sourcing, Conditioning, Treatment, Forwarding and Delivery. We would like to trace back each demand to its source.
+
+Two solution techniques are developed:
+
+- (1) Depth-First Search (DFS) Algorithm, and
+- (2) Linear Programing (LP) Optimization Model (in-progress)
+
+Depth-First Search (DFS) Algorithm: It reads input data from an Excel file named 'NetworkFlowProblem-Data.xlsx', processes the data, and generates the trace back for each demand based on the given order of processing steps. The script utilizes the pandas library to handle data frames efficiently. The developed algorithm is a heuristic search where each is traced back to its source. To ensure that every demand is traced back to its source, in each iteration the algorithm keeps track of all previously identified paths, and if a demand could not be traced back to its source, in the next iteration it re-orders the demands, and repeat the steps for tracing back. This process is repeated until all demands could be traced back to their source.
+
+Linear Programing (LP) Optimization Model: It reads input data from an Excel file named 'NetworkFlowProblem-Data.xlsx'. The problem is mathematically modeled as a Graph where nodes represent the given flows, and edges represent amount of flows. Following the "Flow Conservation Law" a LP model is developed to ensure that all the incoming flows are equal to the outgoing flows, while ensuring the delivery amount is satisfied at demand nodes. Based on the solution, the model generates a figure showing the entire flow network.
 
 ![Network Flow Example](images/networkFlowExample.jpg)
-Figure Description: Example of a network flow from sources to deliveries showing how each flow is breaken down
+**Figure Description: Example of a network flow from source country to demand country for different demands.**
 
 ## Requirements
 
 - Python 3.9.17
 - Libraries: os, pandas
+- MATLAB 2023a (optional)
 
 ## Usage
 
