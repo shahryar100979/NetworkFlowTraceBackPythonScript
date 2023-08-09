@@ -3,6 +3,7 @@
 This Python script performs a trace back of demands in a network flow problem. It reads input data from an Excel file named 'NetworkFlowProblem-Data.xlsx', processes the data, and generates the trace back for each demand based on the given order of processing steps. The script utilizes the pandas library to handle data frames efficiently. The trace back algorithm is a heuristic search where each is traced back to its source. To ensure that every demand is traced back to its source, in each iteration the algorithm keeps track of all previously identified paths, and if a demand could not be traced back to its source, in the next iteration it re-orders the demands, and repeat the steps for tracing back. This process is repeated until all demands could be traced back to their source.
 
 ![Network Flow Example](images/networkFlowExample.jpg)
+Figure Description: Example of a network flow from sources to deliveries showing how each flow is breaken down
 
 ## Requirements
 
