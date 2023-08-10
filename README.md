@@ -82,20 +82,21 @@ It reads input data from an Excel file named 'NetworkFlowProblem-Data.xlsx'. The
 1. Optimization Model (first stage)
 
 2. Decision Variables
-   are defined: u, a continuous variable representing the capacities of the flows
+
+- Decision variavles are defined: u, a continuous variable representing the capacities of the flows
 
 3. Constraints
 
-Upper bounds for the decision variables, u, are defined based on certain conditions such as the process order and feasible flows.
-Constraints cons_a2, cons_a3, and cons_a4 are formulated, defining the relationships between incoming and outgoing flows and ensuring the flow quantities match specified amounts.
-There's an additional penalty mechanism implemented, aiming to penalize non-negative values in u, although this part of the code is commented out.
+- Upper bounds for the decision variables, u, are defined based on certain conditions such as the process order and feasible flows.
+  Constraints cons_a2, cons_a3, and cons_a4 are formulated, defining the relationships between incoming and outgoing flows and ensuring the flow quantities match specified amounts.
+- There's an additional penalty mechanism implemented, aiming to penalize non-negative values in u, although this part of the code is commented out.
 
 3. Objective Function
 
-The objective of the optimization model is to minimize the sum of all capacities (u).
-Solving the Problem:
+- The objective of the optimization model is to minimize the sum of all capacities (u).
+  Solving the Problem:
 
-The optimization problem is solved using the linprog function, with specific options such as the maximum runtime. There are also options for intlinprog to penalize the number of edges (or flows) in the solution , but they are commented out.
+- The optimization problem is solved using the linprog function, with specific options such as the maximum runtime. There are also options for intlinprog to penalize the number of edges (or flows) in the solution , but they are commented out.
 
 4. Ford-Fulkerson algorithm (second stage):
 
