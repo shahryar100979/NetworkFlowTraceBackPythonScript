@@ -81,11 +81,16 @@ It reads input data from an Excel file named 'NetworkFlowProblem-Data.xlsx'. The
 
 1. Optimization Model (first stage)
 
-Decision variables are defined: u, a continuous variable representing the capacities of the flows. 2. Constraints:
+2. Decision Variables
+   are defined: u, a continuous variable representing the capacities of the flows
+
+3. Constraints
 
 Upper bounds for the decision variables, u, are defined based on certain conditions such as the process order and feasible flows.
 Constraints cons_a2, cons_a3, and cons_a4 are formulated, defining the relationships between incoming and outgoing flows and ensuring the flow quantities match specified amounts.
-There's an additional penalty mechanism implemented, aiming to penalize non-negative values in u, although this part of the code is commented out. 3. Objective Function:
+There's an additional penalty mechanism implemented, aiming to penalize non-negative values in u, although this part of the code is commented out.
+
+3. Objective Function
 
 The objective of the optimization model is to minimize the sum of all capacities (u).
 Solving the Problem:
