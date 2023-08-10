@@ -3,7 +3,7 @@
 This project focuses on solving network flow trace back problems given flows from source country to demand country for different demands. Each flow from source country to demand country should go through 5 different processing steps: Sourcing, Conditioning, Treatment, Forwarding and Delivery. We would like to trace back each demand to its source. Below is an example of given input network flow, wehre each node represents a process (i.e., one row of data), each edge represents a possible outgoing flow, and edge weight reperesents the maximum possible outflow. Obviously, the incoming and outgoing flows from each node are not equal, since edge weights do not reperesent the actual flows, but they are just maximum possible values based on given data.
 
 ![Network Flow Example](images/sampleGivenNetworkFlow.jpg)
-**Figure Description: A sample of network with given flow data.**
+**Figure Description: A sample of given network configuration based on input data (note: edge flows reperesents maximum flow, but not necessarily feasible flows or the actual flows).**
 
 ## Proposed Solutions
 
