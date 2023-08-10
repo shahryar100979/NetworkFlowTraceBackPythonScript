@@ -77,6 +77,38 @@ It reads input data from an Excel file named 'NetworkFlowProblem-Data.xlsx'. The
 1. Change directory to "Two-Stage Optimizatio Model (in-progress)"
 2. run optimization_v101.m
 
+## Overview
+
+1. Optimization Model (first stage)
+
+Decision variables are defined: u, a continuous variable representing the capacities of the flows. 2. Constraints:
+
+Upper bounds for the decision variables, u, are defined based on certain conditions such as the process order and feasible flows.
+Constraints cons_a2, cons_a3, and cons_a4 are formulated, defining the relationships between incoming and outgoing flows and ensuring the flow quantities match specified amounts.
+There's an additional penalty mechanism implemented, aiming to penalize non-negative values in u, although this part of the code is commented out. 3. Objective Function:
+
+The objective of the optimization model is to minimize the sum of all capacities (u).
+Solving the Problem:
+
+The optimization problem is solved using the linprog function, with specific options such as the maximum runtime. There are also options for intlinprog to penalize the number of edges (or flows) in the solution , but they are commented out.
+
+4. Ford-Fulkerson algorithm (second stage):
+
+- The adjacency matrix is set based on the input x_sol_mod.
+- The source and sink are identified based on the size of x_sol_mod.
+- The Ford-Fulkerson algorithm is called, and the augmented paths are stored.
+
+5. Path and Flow Extraction:
+
+- The paths and flow values are extracted from the augmentedPaths obtained in the previous step. The paths and flows are saved in paths and - flows matrices, respectively.
+
+6. Traceback and Exhaustive Path Analysis:
+
+- A traceback analysis is performed on the paths and flows. This involves determining the individual delivery paths and flows.
+- The code traces back through the paths, and the traced back deliveries are accumulated in traced_back_deliveries.
+- The paths are then concatenated in reverse order, transforming and concatenating the data in a cell array format.
+- A counter delivery_counter is used to label the deliveries, and the final result is accumulated in the output cell array.
+
 # Additional Information
 
 If you have questions, do not hesitate to reach out at shahryar.monghasemi@gmail.com
