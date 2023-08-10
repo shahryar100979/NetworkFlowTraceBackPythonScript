@@ -46,7 +46,7 @@ It reads input data from an Excel file named 'NetworkFlowProblem-Data.xlsx'. The
 
 8. The sample of outputs can be found in folder 'sample of outputs'.
 
-## Overview
+## Overview of algorithm
 
 1. Import the necessary libraries, including pandas and custom utility functions from different modules.
 
