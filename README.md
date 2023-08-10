@@ -1,15 +1,22 @@
 # Network Flow Trace Back Problem
 
-This project focuses on solving network flow trace back problems given flows from source country to demand country for different demands. Each flow from source country to demand country should go through 5 different processing steps: Sourcing, Conditioning, Treatment, Forwarding and Delivery. We would like to trace back each demand to its source.
+This project focuses on solving network flow trace back problems given flows from source country to demand country for different demands. Each flow from source country to demand country should go through 5 different processing steps: Sourcing, Conditioning, Treatment, Forwarding and Delivery. We would like to trace back each demand to its source. Below is an example of given input network flow, wehre each node represents a process (i.e., one row of data), each edge represents a possible outgoing flow, and edge weight reperesents the maximum possible outflow. Obviously, the incoming and outgoing flows from each node are not equal, since edge weights do not reperesent the actual flows, but they are just maximum possible values based on given data.
+
+![Network Flow Example](images/sampleGivenNetworkFlow.jpg)
+**Figure Description: A sample of network with given flow data.**
+
+## Proposed Solutions
 
 Two solution techniques are developed:
 
 - (1) Depth-First Search (DFS) Algorithm, and
-- (2) Linear Programing (LP) Optimization Model (in-progress)
+- (2) Two-Stage Linear Programing (LP) Optimization Model
 
 Depth-First Search (DFS) Algorithm: It reads input data from an Excel file named 'NetworkFlowProblem-Data.xlsx', processes the data, and generates the trace back for each demand based on the given order of processing steps. The script utilizes the pandas library to handle data frames efficiently. The developed algorithm is a heuristic search where each is traced back to its source. To ensure that every demand is traced back to its source, in each iteration the algorithm keeps track of all previously identified paths, and if a demand could not be traced back to its source, in the next iteration it re-orders the demands, and repeat the steps for tracing back. This process is repeated until all demands could be traced back to their source.
 
-Linear Programing (LP) Optimization Model: It reads input data from an Excel file named 'NetworkFlowProblem-Data.xlsx'. The problem is mathematically modeled as a Graph where nodes represent the given flows, and edges represent amount of flows. Following the "Flow Conservation Law" a LP model is developed to ensure that all the incoming flows are equal to the outgoing flows, while ensuring the delivery amount is satisfied at demand nodes. Based on the solution, the model generates a figure showing the entire flow network.
+Two-Stage Linear Programing (LP) Optimization Model: The idea is to identify the graph where the edge weights in the graph represents the actual capacity, or flow in the network. Knowing the actual flows of edges, turns the problem into well-known "Maximum FLow" optimization problem, where there exist several efficient solution algorithms. It should be noted that in our case, the network is a maximum flow with multiple sources and sinks, however, the solution tecnhiques remain the same, by using a trick to introduce dummy (i.e., virtual) single source and single sink node.
+
+It reads input data from an Excel file named 'NetworkFlowProblem-Data.xlsx'. The problem is mathematically modeled as a Graph where nodes represent the given flows, and edges represent amount of flows. Following the "Flow Conservation Law" a LP model is developed to ensure that all the incoming flows are equal to the outgoing flows, while ensuring the delivery amount is satisfied at demand nodes. Based on the solution, the model generates a figure showing the entire flow network.
 
 ![Network Flow Example](images/networkFlowExample.jpg)
 **Figure Description: Example of a network flow from source country to demand country for different demands.**
