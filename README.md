@@ -28,7 +28,7 @@ It reads input data from an Excel file named 'NetworkFlowProblem-Data.xlsx'. The
 
 # Depth-First Search (DFS) Algorithm
 
-## Usage of Depth-First Search (DFS) Algorithm
+## How to run?
 
 1. Ensure that the 'NetworkFlowProblem-Data.xlsx' file is located in the 'input' folder. Or you could provide your excel file with a sheet name that starts with "Input" in the 'input' folder.
 
@@ -72,8 +72,11 @@ It reads input data from an Excel file named 'NetworkFlowProblem-Data.xlsx'. The
 
 12. The output of the trace back is written into an Excel file named 'output.xlsx' in the root directory.
 
-## Additional Information
+# Two-Stage Linear Programing (LP) Optimization Model
 
-This Python script is designed to efficiently handle network flow data, perform trace backs, and produce an Excel output file containing the results of the trace back process.
+1. Change directory to "Two-Stage Optimizatio Model (in-progress)"
+2. run optimization_v101.m
+
+# Additional Information
 
 If you have questions, do not hesitate to reach out at shahryar.monghasemi@gmail.com
