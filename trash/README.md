@@ -1,2 +1,0 @@
-## Trash
-This folder is just past records of python scripts, I used for developing the final model. While these files are not being used, they are stored as a reminder for the author on his thought process. It shows how the algorithm was developed initially for a much simplified problem, and sometimes, even not generating results, and how it iteratively improved over time.
