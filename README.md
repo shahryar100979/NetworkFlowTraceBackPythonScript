@@ -3,7 +3,7 @@
 This project focuses on solving network flow trace back problems given flows from source country to demand country for different demands. Each flow from source country to demand country should go through 5 different processing steps: Sourcing, Conditioning, Treatment, Forwarding and Delivery. We would like to trace back each demand to its source. Below is an example of given input network flow, wehre each node represents a process (i.e., one row of data), each edge represents a possible outgoing flow, and edge weight reperesents the maximum possible outflow. Obviously, the incoming and outgoing flows from each node are not equal, since edge weights do not reperesent the actual flows, but they are just maximum possible values based on given data.
 
 ![Network Flow Example](images/sampleGivenNetworkFlow.jpg)
-**Figure Description: A sample of given network configuration based on input data (note: edge flows reperesents maximum flow, but not necessarily feasible flows or the actual flows).**
+**Figure Description: A sample of network configuration based on given input data (note: edge flows reperesent maximum flow, but not necessarily feasible or actual flows).**
 
 ## Proposed Solutions
 
@@ -16,7 +16,7 @@ Two solution techniques are developed:
 
 **Two-Stage Linear Programing (LP) Optimization Model:** The idea is to identify the graph where the edge weights in the graph represents the actual capacity, or flow in the network. Knowing the actual flows of edges, turns the problem into well-known "Maximum FLow" optimization problem, where there exist several efficient solution algorithms (such as Ford-Fulkerson algorithm). It should be noted that in our case, the network is a maximum flow with multiple sources and sinks, however, the solution tecnhiques remains the same, by using a trick to add two dummy nodes, where (i.e., virtual) single source and single sink dummy nodes are added.
 
-It reads input data from an Excel file named 'NetworkFlowProblem-Data.xlsx'. The problem is mathematically modeled as a Graph where nodes represent the given flows, and edges represent amount of flows. Following the "Flow Conservation Law" a LP model is developed to ensure that all the incoming flows are equal to the outgoing flows, while ensuring the delivery amount is satisfied at demand nodes. The LP model identifies the feasible flow through the network. Then we use the LP solution and Ford-Fulkerson algorithm to identify all the flows and paths from the source to the sink.
+It reads input data from an Excel file named 'NetworkFlowProblem-Data.xlsx'. The problem is mathematically modeled as a Graph where nodes represent the given flows, and edges represent amount of flows. Following the "Flow Conservation Law" a LP model is developed to ensure that all the incoming flows are equal to the outgoing flows, while ensuring the delivery amount is satisfied at demand nodes. The LP model identifies the feasible flow through the network. Then we use the LP solution and turn the problem into a single source and sink by adding two dummy nodes. Next, I use Ford-Fulkerson algorithm to identify all the flows and paths from the source to the sink.
 
 ![Network Flow Example](images/networkFlowExample.jpg)
 **Figure Description: An example of a network flow from source country to demand country for different demands (results of LP model).**
