@@ -12,9 +12,9 @@ Two solution techniques are developed:
 - (1) Depth-First Search (DFS) Algorithm, and
 - (2) Two-Stage Linear Programing (LP) Optimization Model
 
-Depth-First Search (DFS) Algorithm: It reads input data from an Excel file named 'NetworkFlowProblem-Data.xlsx', processes the data, and generates the trace back for each demand based on the given order of processing steps. The script utilizes the pandas library to handle data frames efficiently. The developed algorithm is a heuristic search where each is traced back to its source. To ensure that every demand is traced back to its source, in each iteration the algorithm keeps track of all previously identified paths, and if a demand could not be traced back to its source, in the next iteration it re-orders the demands, and repeat the steps for tracing back. This process is repeated until all demands could be traced back to their source.
+**Depth-First Search (DFS) Algorithm:** It reads input data from an Excel file named 'NetworkFlowProblem-Data.xlsx', processes the data, and generates the trace back for each demand based on the given order of processing steps. The script utilizes the pandas library to handle data frames efficiently. The developed algorithm is a heuristic search where each is traced back to its source. To ensure that every demand is traced back to its source, in each iteration the algorithm keeps track of all previously identified paths, and if a demand could not be traced back to its source, in the next iteration it re-orders the demands, and repeat the steps for tracing back. This process is repeated until all demands could be traced back to their source.
 
-Two-Stage Linear Programing (LP) Optimization Model: The idea is to identify the graph where the edge weights in the graph represents the actual capacity, or flow in the network. Knowing the actual flows of edges, turns the problem into well-known "Maximum FLow" optimization problem, where there exist several efficient solution algorithms. It should be noted that in our case, the network is a maximum flow with multiple sources and sinks, however, the solution tecnhiques remain the same, by using a trick to introduce dummy (i.e., virtual) single source and single sink node.
+**Two-Stage Linear Programing (LP) Optimization Model:** The idea is to identify the graph where the edge weights in the graph represents the actual capacity, or flow in the network. Knowing the actual flows of edges, turns the problem into well-known "Maximum FLow" optimization problem, where there exist several efficient solution algorithms. It should be noted that in our case, the network is a maximum flow with multiple sources and sinks, however, the solution tecnhiques remain the same, by using a trick to introduce dummy (i.e., virtual) single source and single sink node.
 
 It reads input data from an Excel file named 'NetworkFlowProblem-Data.xlsx'. The problem is mathematically modeled as a Graph where nodes represent the given flows, and edges represent amount of flows. Following the "Flow Conservation Law" a LP model is developed to ensure that all the incoming flows are equal to the outgoing flows, while ensuring the delivery amount is satisfied at demand nodes. Based on the solution, the model generates a figure showing the entire flow network.
 
@@ -23,11 +23,12 @@ It reads input data from an Excel file named 'NetworkFlowProblem-Data.xlsx'. The
 
 ## Requirements
 
-- Python 3.9.17
-- Libraries: os, pandas
-- MATLAB 2023a (optional)
+- Python 3.9.17, os, pandas
+- MATLAB 2023a & Gurobi 10.0.0 (optional if you would like to use the two-stage optimization model)
 
-## Usage
+# Depth-First Search (DFS) Algorithm
+
+## Usage of Depth-First Search (DFS) Algorithm
 
 1. Ensure that the 'NetworkFlowProblem-Data.xlsx' file is located in the 'input' folder. Or you could provide your excel file with a sheet name that starts with "Input" in the 'input' folder.
 
