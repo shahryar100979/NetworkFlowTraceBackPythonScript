@@ -74,10 +74,12 @@ It reads input data from an Excel file named 'NetworkFlowProblem-Data.xlsx'. The
 
 # Two-Stage Linear Programing (LP) Optimization Model
 
+## How to run?
+
 1. Change directory to "Two-Stage Optimizatio Model (in-progress)"
 2. run optimization_v101.m
 
-## Overview
+## Overview of algorithm
 
 1. **Optimization Model (first stage):**
 
@@ -98,7 +100,7 @@ It reads input data from an Excel file named 'NetworkFlowProblem-Data.xlsx'. The
 
 - The optimization problem is solved using the linprog function, with specific options such as the maximum runtime. There are also options for intlinprog to penalize the number of edges (or flows) in the solution , but they are commented out.
 
-4. **Ford-Fulkerson algorithm (second stage):**
+4. **Ford-Fulkerson Algorithm (second stage):**
 
 - The adjacency matrix is set based on the input x_sol_mod.
 - The source and sink are identified based on the size of x_sol_mod.
