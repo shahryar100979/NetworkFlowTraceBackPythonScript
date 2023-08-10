@@ -83,7 +83,7 @@ It reads input data from an Excel file named 'NetworkFlowProblem-Data.xlsx'. The
 
 2. Decision Variables
 
-- Decision variavles are defined: u, a continuous variable representing the capacities of the flows
+- Decision variavles, u, are continuous variables representing the capacities of the flows
 
 3. Constraints
 
