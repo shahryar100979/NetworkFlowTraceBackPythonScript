@@ -19,7 +19,7 @@ Two solution techniques are developed:
 It reads input data from an Excel file named 'NetworkFlowProblem-Data.xlsx'. The problem is mathematically modeled as a Graph where nodes represent the given flows, and edges represent amount of flows. Following the "Flow Conservation Law" a LP model is developed to ensure that all the incoming flows are equal to the outgoing flows, while ensuring the delivery amount is satisfied at demand nodes. Based on the solution, the model generates a figure showing the entire flow network.
 
 ![Network Flow Example](images/networkFlowExample.jpg)
-**Figure Description: Example of a network flow from source country to demand country for different demands.**
+**Figure Description: An example of a network flow from source country to demand country for different demands (results of LP model).**
 
 ## Requirements
 
