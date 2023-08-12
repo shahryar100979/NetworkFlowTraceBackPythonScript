@@ -14,16 +14,19 @@ Two solution techniques are developed:
 
 **Depth-First Search (DFS) Algorithm:** It reads input data from an Excel file named 'NetworkFlowProblem-Data.xlsx', processes the data, and generates the trace back for each demand based on the given order of processing steps. The script utilizes the pandas library to handle data frames efficiently. The developed algorithm is a heuristic search where each is traced back to its source. To ensure that every demand is traced back to its source, in each iteration the algorithm keeps track of all previously identified paths, and if a demand could not be traced back to its source, in the next iteration it re-orders the demands, and repeat the steps for tracing back. This process is repeated until all demands could be traced back to their source.
 
-**Two-Stage Linear Programing (LP) Optimization Model:** The idea is to identify the graph where the edge weights in the graph represents the actual capacity, or flow in the network. Knowing the actual flows of edges, turns the problem into well-known "Maximum FLow" optimization problem, where there exist several efficient solution algorithms (such as Ford-Fulkerson algorithm). It should be noted that in our case, the network is a maximum flow with multiple sources and sinks, however, the solution tecnhiques remains the same, by using a trick to add two dummy nodes, where (i.e., virtual) single source and single sink dummy nodes are added.
+**Two-Stage Linear Programing (LP) Optimization Model:** The model uses a two-stage optimization approach to maximize flow through a network with multiple sources and sinks. First, a linear programming (LP) model is developed based on graph representation of the network. The nodes represent known flows, and edges represent flow capacity between nodes. Flow conservation constraints are added to ensure incoming and outgoing flows balance at each node. The LP model identifies a feasible flow solution.
 
-It reads input data from an Excel file named 'NetworkFlowProblem-Data.xlsx'. The problem is mathematically modeled as a Graph where nodes represent the given flows, and edges represent amount of flows. Following the "Flow Conservation Law" a LP model is developed to ensure that all the incoming flows are equal to the outgoing flows, while ensuring the delivery amount is satisfied at demand nodes. The LP model identifies the feasible flow through the network.
+Next, the flow network is transformed into a single source, single sink maximum flow problem by adding dummy source and sink nodes. This is done because there are efficient, polynomial-time algorithms like Ford-Fulkerson to solve the maximum flow problem. By transforming into this well-studied form, the model can leverage these existing algorithms to efficiently find the optimal solution.
+
+The Ford-Fulkerson algorithm is then applied to identify the maximum flow and paths from source to sink. This two-stage approach combines the power of LP optimization and max-flow algorithms to solve the multi-source, multi-sink maximum flow problem.
+
+The model reads input data from an Excel file and outputs the optimal flows and paths. By combining standard optimization techniques, it provides an effective way to maximize flow for this network structure.
 
 ![Network Flow Example](images/networkFlowExample.jpg)
 **Figure Description: An example of a network flow from source country to demand country for different demands (results of LP model).**
 
-Then we use the LP solution and turn the problem into a single source and sink by adding two dummy nodes. Next, I use Ford-Fulkerson algorithm to identify all the flows and paths from the source to the sink.
 ![Network Flow Example](images/Input1_graph_network_with_dummy_nodes.jpg)
-**Figure Description: An example of adding dummy source and sink nodes to turn a maximum flow problem with multiple source and sink nodes to single source and sink.**
+**Figure Description: Transformation of a multiple source, multiple sink maximum flow network into a single source and sink flow network. Dummy nodes are added to consolidate the sources and sinks.**
 
 ## Requirements
 
