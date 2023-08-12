@@ -16,10 +16,14 @@ Two solution techniques are developed:
 
 **Two-Stage Linear Programing (LP) Optimization Model:** The idea is to identify the graph where the edge weights in the graph represents the actual capacity, or flow in the network. Knowing the actual flows of edges, turns the problem into well-known "Maximum FLow" optimization problem, where there exist several efficient solution algorithms (such as Ford-Fulkerson algorithm). It should be noted that in our case, the network is a maximum flow with multiple sources and sinks, however, the solution tecnhiques remains the same, by using a trick to add two dummy nodes, where (i.e., virtual) single source and single sink dummy nodes are added.
 
-It reads input data from an Excel file named 'NetworkFlowProblem-Data.xlsx'. The problem is mathematically modeled as a Graph where nodes represent the given flows, and edges represent amount of flows. Following the "Flow Conservation Law" a LP model is developed to ensure that all the incoming flows are equal to the outgoing flows, while ensuring the delivery amount is satisfied at demand nodes. The LP model identifies the feasible flow through the network. Then we use the LP solution and turn the problem into a single source and sink by adding two dummy nodes. Next, I use Ford-Fulkerson algorithm to identify all the flows and paths from the source to the sink.
+It reads input data from an Excel file named 'NetworkFlowProblem-Data.xlsx'. The problem is mathematically modeled as a Graph where nodes represent the given flows, and edges represent amount of flows. Following the "Flow Conservation Law" a LP model is developed to ensure that all the incoming flows are equal to the outgoing flows, while ensuring the delivery amount is satisfied at demand nodes. The LP model identifies the feasible flow through the network.
 
 ![Network Flow Example](images/networkFlowExample.jpg)
 **Figure Description: An example of a network flow from source country to demand country for different demands (results of LP model).**
+
+Then we use the LP solution and turn the problem into a single source and sink by adding two dummy nodes. Next, I use Ford-Fulkerson algorithm to identify all the flows and paths from the source to the sink.
+![Network Flow Example](images/Input1_graph_network_with_dummy_nodes.jpg)
+**Figure Description: An example of adding dummy source and sink nodes to turn a maximum flow problem with multiple source and sink nodes to single source and sink.**
 
 ## Requirements
 
