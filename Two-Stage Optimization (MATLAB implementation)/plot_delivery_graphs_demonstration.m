@@ -1,18 +1,18 @@
-function plot_delivery_graphs(input_data, ordinal_process, x_sol, output_filename)
+function plot_delivery_graphs_demonstration(input_data, ordinal_process, x_sol, output_filename)
 
 graph = digraph(x_sol);
 
 
-LWidths = 5*graph.Edges.Weight/max(graph.Edges.Weight);
+LWidths = 1*graph.Edges.Weight/max(graph.Edges.Weight);
 graph_plot = plot(graph, 'Layout', 'layered',  'EdgeLabel', graph.Edges.Weight, 'LineWidth',LWidths);
 
 
 
 graph_plot.NodeColor = 'r';
-graph_plot.MarkerSize = 5;
-graph_plot.ArrowSize=5;
-graph_plot.EdgeFontSize=5;
-graph_plot.NodeFontSize=4;
+graph_plot.MarkerSize = 3;
+graph_plot.ArrowSize=3;
+graph_plot.EdgeFontSize=0.1;
+graph_plot.NodeFontSize=5;
 graph_plot.NodeFontWeight="bold";
 
 
@@ -28,13 +28,15 @@ for node = 1:numel(node_labels)
 
     node_labels{node} = char(string(input_data.to_processing_cnt{node}) + ...
         "\newline" + ...
-        "week:" + string(input_data.Week(node)));
+        "week:" + string(input_data.Week(node)) + ...
+        "\newline" + ...
+        "amount:" + string(input_data.Amount(node)));
 end
 
 graph_plot.NodeLabel = node_labels;
 
 for process = 1:numel(ordinal_process)
-    x_location = max(graph_plot.XData)+1 ;
+    x_location = max(graph_plot.XData)+0.5 ;
     y_location = 5.1 - process + 1 ;
     text(gca, x_location, y_location, ordinal_process{process}, 'FontSize', 10);
 end

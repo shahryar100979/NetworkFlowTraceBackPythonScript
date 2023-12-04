@@ -49,5 +49,6 @@ while status == 0:
     status = output["status"]
     print(output["message"])
     if not status:
-        print(f"\n\n================RESTART ({attempt+1} attempt(s))=============")
+        attempt += 1 
+        print(f"\n\n================RESTART ({attempt} attempt(s))=============")
 

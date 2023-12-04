@@ -77,8 +77,8 @@ Two solution techniques are developed:
 
 ## How to run?
 
-1. Change directory to "Two-Stage Optimizatio Model (in-progress)"
-2. run optimization_v101.m
+1. Change directory to "Two-Stage Optimizatio Model"
+2. run optimization_v101.m in MATLAB
 
 ## Overview of algorithm
 

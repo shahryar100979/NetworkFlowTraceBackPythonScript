@@ -19,6 +19,8 @@ for node = delivery_nodes
     outgoing_quantity = sum(x_sol(:,node), 'all');
     dummy_destination(node,1) = outgoing_quantity;
 
+    % dummy_destination(node,1) = input_data.Amount(node);
+
 end
 
 dummy_destination =  [dummy_destination; 0; 0];

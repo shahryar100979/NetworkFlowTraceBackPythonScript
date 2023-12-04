@@ -1,21 +1,28 @@
+%% Initialization
 clear
 clc
 close all
 
-% Specify the file path and name
+%% Parameters
+file_name = 'NetworkFlowProblem-Data.xlsx';
+sheet_name = 'Input1';
+penalize_number_of_flows = true; % this ensurs the solution to have the minimum number of edges
+
+
+%% Read Input Data
+
 if ismac
-    file_path = '../input/NetworkFlowProblem-Data.xlsx';
+    file_path = ['../input/', file_name];
 else
-    file_path = '..\input\NetworkFlowProblem-Data.xlsx';
+    file_path = ['..\input\' , file_name];
 end
 
-sheet_name = 'Input5';
+
 % Read the data from the Excel file
 input_data = readtable(file_path, 'FileType','spreadsheet','Sheet',sheet_name);
 
 %% Configurations
 number_of_flows = size(input_data,1);
-amounts = zeros(number_of_flows);
 
 RunTime = 2*60*60 ; % maximum run time in seconds
 ordinal_process = {'Sourcing', 'Conditioning', 'Treatment', 'Forwarding', 'Delivery'};
@@ -28,12 +35,14 @@ output_filename = [sheet_name, '_graph network', '.jpg'];
 
 plot_delivery_graphs(input_data, ordinal_process, x_sol, output_filename)
 
-%% add dummy
+%% add dummy source and sink
 add_dummy
+
 output_filename =[sheet_name, '_graph_network_with_dummy_nodes', '.jpg'];
+figure
 plot_delivery_graphs_with_dummy(input_data, ordinal_process, x_sol_mod, output_filename)
 
-%% trace back all deliveries
+%% trace back all deliveries and generate output files
 output = MaxFlowMultipleSourceDemands(input_data, ordinal_process, x_sol_mod);
 
 header = {
